@@ -31,24 +31,24 @@ def conpnumber(num: int):
     while i < len(numstr):
         set1.append(int(numstr[i])*10**(lenmum-i))
         i += 1
-    print(set1)
+    return set1
 
 def checkio(num: int) -> str:
-    result = 0
-    numstr = str(num)
-    if len(numstr) == 1:
-        result = FIRST_TEN[num]
-    elif num < 20:
-        result = SECOND_TEN[num-10]
-    elif len(numstr) == 2:
-        result = SECOND_TEN[int(numstr[0])] + ' ' + FIRST_TEN[num]
-
-    i = 0
-    set1 = []
-    while i <= len(numstr):
-        set1.pop((numstr[i]*(i+1)**10))
-        i += 1
-    print(set1)
+    result = ""
+    # numstr = str(num)
+    # if len(numstr) == 1:
+    #     result = FIRST_TEN[num]
+    # elif num < 20:
+    #     result = SECOND_TEN[num-10]
+    # elif len(numstr) == 2:
+    #     result = SECOND_TEN[int(numstr[0])] + ' ' + FIRST_TEN[num]
+    #
+    # i = 0
+    # set1 = []
+    # while i <= len(numstr):
+    #     set1.pop((numstr[i]*(i+1)**10))
+    #     i += 1
+    # print(set1)
     return result
 
 conpnumber(152)
