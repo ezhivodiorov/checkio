@@ -35,13 +35,16 @@ def conpnumber(num: int):
 
 def checkio(num: int) -> str:
     result = ""
-    # numstr = str(num)
-    # if len(numstr) == 1:
-    #     result = FIRST_TEN[num]
-    # elif num < 20:
-    #     result = SECOND_TEN[num-10]
-    # elif len(numstr) == 2:
-    #     result = SECOND_TEN[int(numstr[0])] + ' ' + FIRST_TEN[num]
+    for number in conpnumber(num):
+        # print(len(number))
+        # print(number)
+        numstr = str(number)
+        if len(numstr) == 1:
+            result = FIRST_TEN[number]
+        elif number < 20:
+            result = SECOND_TEN[number-10]
+        elif len(numstr) == 2:
+            result = SECOND_TEN[int(numstr[0])] + ' ' + FIRST_TEN[number]
     #
     # i = 0
     # set1 = []
@@ -53,9 +56,9 @@ def checkio(num: int) -> str:
 
 conpnumber(152)
 
-# print("Example:")
-# print(checkio(4))
-# print(checkio(1))
+print("Example:")
+print(checkio(4))
+print(checkio(1))
 
 # # These "asserts" are used for self-checking
 # assert checkio(1) == "one"
