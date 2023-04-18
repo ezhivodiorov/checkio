@@ -33,14 +33,14 @@ def conpnumber(num: int) ->set:
         numstr = numstr[1:]
     if len(numstr) > 1:
         if int(numstr) == 10:
-            setnumber[1] = int[0]
+            setnumber[1] = int(numstr)
             numstr = ''
         elif int(numstr) < 20 and int(numstr) > 10:
             setnumber[1] = int(numstr)
             numstr = ''
         else:
             setnumber[1] = int(numstr[0])
-            numstr = ''
+            numstr = numstr[1:]
     if len(numstr) > 0:
         setnumber[2] = int(numstr)
 
@@ -55,7 +55,7 @@ def checkio(num: int) -> str:
     if hubdr != 0:
         result = FIRST_TEN[hubdr] + ' ' + HUNDRED
     if dec != 0:
-        if dec > 10:
+        if dec >= 10:
             result = result + " " + SECOND_TEN[int(str(dec)[1])]
         else:
             result = result + " " + OTHER_TENS[dec]
@@ -64,15 +64,15 @@ def checkio(num: int) -> str:
 
     return result.lstrip()
 
-conpnumber(152)
 
 print("Example:")
-print(checkio(312))
-print(checkio(11))
-print(checkio(12))
-print(checkio(21))
-print(checkio(4))
-
+print(checkio(999))
+# print(checkio(312))
+# print(checkio(11))
+# print(checkio(12))
+# print(checkio(21))
+# print(checkio(4))
+#
 # These "asserts" are used for self-checking
 assert checkio(1) == "one"
 assert checkio(2) == "two"
