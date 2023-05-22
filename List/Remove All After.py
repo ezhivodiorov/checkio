@@ -2,12 +2,10 @@ from collections.abc import Iterable
 
 
 def remove_all_after(items: list[int], border: int) -> Iterable[int]:
-    newlist = []
-    for i in items:
-        newlist.append(i)
-        if i == border:
-            break
-    return newlist
+    if border in items:
+        index = items.index(border)
+        del items[index + 1:]
+    return items
 
 
 print("Example:")
