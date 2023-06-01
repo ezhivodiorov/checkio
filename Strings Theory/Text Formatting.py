@@ -1,47 +1,18 @@
-def format_s(text: str, width: int, style: str, ends: bool)->str:
-    quant = width - len(text)
+from textwrap import wrap
+
+def text_formatting(text, width, style):
+    lines = wrap(text, width=width)
+    if style == 'l':
+        return '\n'.join(lines)
+    if style == 'c':
+        return '\n'.join(' '*((width-len(line))//2) + line for line in lines)
     if style == 'r':
-        text = ' '*width+text
-        return text[-width:]
-    elif style == 'j' and ends == True:
-        return text
-    elif style == 'c':
-        start = int(quant / 2)
-        return ' '*start + text
-    elif style == 'j':
-        newtext = ''
-        lspace = [1 for i in range(text.count(' '))]
-        index = 0
-        while quant > 0:
-            lspace[index] += 1
-            quant -= 1
-            index += 1
-            if index == len(lspace):
-                index = 0
-        lspace.append(0)
-        words = text.split(" ")
-        index = 0
-        for word in words:
-            newtext += word + ' '* lspace[index]
-            index+=1
-
-        return newtext
-    else:
-        return text
-
-
-def text_formatting(text: str, width: int, style: str) -> str:
-    newtext = ''
-    words = text.split();
-    adstring = ''
-    for word in words:
-        if len(adstring + '' + word) >= width:
-            newtext += format_s(adstring, width, style, False) + '\n'
-            adstring = word
-        else:
-            adstring = adstring + (' ' if len(adstring)!=0 else '') + word
-    newtext += format_s(adstring, width, style, True)
-    return newtext
+        return '\n'.join(line.rjust(width) for line in lines)
+    for i in range(len(lines) - 1):
+        gap, big_blocks = divmod(width - len(lines[i]), lines[i].count(' '))
+        lines[i] = lines[i].replace(' ', ' '*(gap+1)) \
+                           .replace(' '*(gap+1), ' '*(gap+2), big_blocks)
+    return '\n'.join(lines)
 
 
 LINE = (
