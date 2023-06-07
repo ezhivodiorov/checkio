@@ -1,11 +1,23 @@
 def is_number(val: str) -> bool:
-    return str.isdigit()
+    result = True
+    for i in val:
+        if i.isalpha():
+            result = False
+
+    if result:
+        try:
+            float(val)
+        except:
+            result = False
+
+    return result
 
 
 print("Example:")
-print(is_number("10"))
+print(is_number("--5"))
 
 # These "asserts" are used for self-checking
+assert is_number("--5") == False
 assert is_number("34") == True
 assert is_number("df") == False
 assert is_number("") == False
