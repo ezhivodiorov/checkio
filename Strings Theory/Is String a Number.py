@@ -1,19 +1,16 @@
 def is_number(val: str) -> bool:
     result = True
-    arifmetic = '-+/*'
-    result = len(val) != 0
-    wasNubmer = False
     for i in val:
         if i.isalpha():
             result = False
-            break
-        elif i.isnumeric():
-            wasNubmer = True
-        elif (i in arifmetic) and wasNubmer:
-            result = False
-            break
 
-    return result if wasNubmer else False
+    if result:
+        try:
+            float(val)
+        except:
+            result = False
+
+    return result
 
 
 print("Example:")
