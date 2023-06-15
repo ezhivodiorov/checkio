@@ -2,7 +2,7 @@ from collections.abc import Iterable
 
 def remove_all_before(items: list, border: int) -> Iterable:
     try:
-        index = items.index(int)
+        index = items.index(border)
     except:
         index = 0
     return items[index:]
