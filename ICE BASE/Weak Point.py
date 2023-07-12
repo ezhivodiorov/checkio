@@ -8,6 +8,7 @@ def weak_point(matrix):
         if sumrow == -1:
             sumrow = sum
         elif sumrow > sum:
+            sumrow = sum
             x = row
     y = 0
     sumcolumn = -1
@@ -18,6 +19,7 @@ def weak_point(matrix):
         if sumcolumn == -1:
             sumcolumn = sum
         elif sumcolumn > sum:
+            sumcolumn = sum
             y = column
 
     return x, y  # [0, 0]
